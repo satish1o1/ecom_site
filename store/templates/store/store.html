@@ -1,0 +1,191 @@
+{% extends 'store/base.html' %} {% block content %}
+<div class="containere">
+  <div class="rowe">
+    <div class="col-2">
+      <h1>
+        Give You Workout <br />
+        A New Style
+      </h1>
+      <p>
+        Sucess isn't always about greatness. It's About consistency.
+        <br />Consistent hard work gains sucess.Greatness will come.
+      </p>
+      <a href="" class="btne">Explore now </a>
+    </div>
+
+    <div class="col-2">
+      <img src="images/image1.png" />
+    </div>
+  </div>
+</div>
+<!-- <div class="row">
+  <div class="col-2">
+        <h1>Give You Workout <br> A New Style</h1>
+        <p>Sucess isn't always about greatness. It's About consistency. <br>Consistent
+              hard work gains sucess.Greatness will come.
+        </p>
+       <a href="" class="btn btn-outline-danger">Explore now </a>
+  </div>
+
+  <div class="col-2">
+        <img src="store/images2/image1.png" >
+  </div>
+</div> -->
+<div class="small-container">
+  <div class="rowe">
+    {% for product in products %}
+    <div class="col-4 box-element">
+      <img src="{{product.image.url}}" alt="" />
+      <div class="rating">
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star" aria-hidden="true"></i>
+        <i class="fa fa-star-o" aria-hidden="true"></i>
+      </div>
+      <h6>{{product.title}}</h6>
+      <button
+        data-product="{{product.id}}"
+        data-action="add"
+        class="btn btn-outline-success update-cart"
+      >
+        Add to Cart
+      </button>
+      <a href="/product/{{product.id}}" class="btn btn-outline-primary">View</a>
+      <span>{{product.price|floatformat:2}}$</span>
+    </div>
+    <!-- <div class="row">
+    {% for product in products %}
+    <div class="col-sm-3">
+      <div class="card" style="width: 18rem">
+        <img
+          src="{{product.image.url}}"
+          class="thumbnail"
+          alt="..."
+          style="height: 16rem"
+        />
+        <div class="box-element product">
+          <h6 class="text-center"><strong>{{product.title}}</strong></h6>
+          <hr />
+          <button
+            data-product="{{product.id}}"
+            data-action="add"
+            class="btn btn-outline-secondary add-btn update-cart"
+          >
+            add to cart
+          </button>
+          <a
+            href="/product/{{product.id}}"
+            class="btn btn-outline-success add-btn"
+            >view</a
+          >
+          <p style="display: inline-block; float: right">
+            {{product.price|floatformat:2}}$
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div> -->
+    {% endfor %}
+  </div>
+</div>
+
+<!--------------------------------- Review ------------------------------------------>
+<div class="review">
+  <div class="small-container">
+    <div class="rowe p-1">
+      <div class="col-3">
+        <i class="fa fa-quote-left"></i>
+        <p>
+          Lorem Ipsum is simply dummy text of the printing industry's standard
+          dummy text ever
+        </p>
+        <div class="rating">
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+        </div>
+        <img src="images/user-1.png" alt="" />
+        <h3>Kelly</h3>
+      </div>
+      <div class="col-3">
+        <i class="fa fa-quote-left"></i>
+        <p>
+          Lorem Ipsum is simply dummy text of the printing industry's standard
+          dummy text ever
+        </p>
+        <div class="rating">
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+        </div>
+        <img src="images/user-2.png" alt="" />
+        <h3>satish</h3>
+      </div>
+      <div class="col-3">
+        <i class="fa fa-quote-left"></i>
+        <p >
+          Lorem Ipsum is simply dummy text of the printing industry's standard
+          dummy text ever
+        </p>
+        <div class="rating">
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+        </div>
+        <img src="images/user-3.png" alt="" />
+        <h3>Sai baba</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!---------------------------------- footer ------------------------------------------->
+<div class="footer">
+  <div class="containere">
+    <div class="rowe">
+      <div class="footer-col-1">
+        <h2>Download our app</h2>
+        <p>download app for android and ios</p>
+        <img src="images/app-store.png" style="width: 180px; height: 53px" />
+        <img src="images/play-store.png" style="width: 180px; height: 53px" />
+      </div>
+      <div class="footer-col-2">
+        <img src="images/logo.png" alt="" style="width: 200px" />
+        <p style="color: white;">
+          Our Purpose Is To Sustainably Make the Pleasure and Venefits of Sports
+          Accessible to the Many.
+        </p>
+      </div>
+      <div class="footer-col-3">
+        <h2>Useful links</h2>
+        <ul>
+          <li>Coupons</li>
+          <li>Blogspot</li>
+          <li>Return Policy</li>
+          <li>Join Affiliate</li>
+        </ul>
+      </div>
+      <div class="footer-col-4">
+        <h2>Follow us</h2>
+        <ul>
+          <li>Twitter</li>
+          <li>Facebook</li>
+          <li>Instagram</li>
+          <li>Telegram</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="bg-light pt-3" />
+    <h5 style="text-align: center">&copy;SATISH</h5>
+  </div>
+</div>
+{% endblock %}

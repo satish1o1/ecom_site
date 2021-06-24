@@ -1,0 +1,38 @@
+{% extends 'store/base.html' %}
+ {% block content %}
+<div class="register ">
+<form method="POST">
+  {% csrf_token %}
+  <div class="mb-3 ">
+    <h3 class="">Signup</h3>
+    <hr>
+    <label for="name" name="username " class="form-label">Username</label>
+    <div>{{form.username}}</div>
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <div >{{form.email}}</div>
+  </div>
+  <div class="mb-3">
+    <label for="password1" class="form-label">Password1</label>
+    <div>{{form.password1}}</div>
+  </div>
+  <div class="mb-3">
+    <label for="password2" class="form-label">Password2</label>
+    <div>{{form.password2}}</div>
+  </div>
+  {{form.errors}}
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+<!-- <form action="" method="POST">
+{{form.email.label}}
+{{form.email}}
+{{form.password1.label}}
+{{form.password1}}
+{{form.password2.label}}
+{{form.password2}}
+<input type="submit">
+</form> -->
+{% endblock %}

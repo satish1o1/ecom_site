@@ -1,0 +1,63 @@
+{% extends 'store/base.html' %} {% block content %}
+<div class="container mt-5">
+  <div class="row box-element">
+    <div class="col-lg-3 box-element p-2">
+      <div id="viw">
+        <img
+          class="img-fluid"
+          style="width: 350px; height: 360px"
+          src="{{product.image.url}}"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div>
+        <ul>
+          <li>
+            <h3>{{product.title}}</h3>
+          </li>
+          <li>
+            <h3>Price</h3>
+            <p>{{product.price}}$</p>
+          </li>
+          <li>
+            <h3>Description</h3>
+            <hr />
+            <p>{{product.description}}</p>
+          </li>
+        </ul>
+        <div>
+          <div class="d-inline ">
+            <a class="mx-0" href="/checkout"
+              ><button
+                data-product="{{product.id}}"
+                data-action="add"
+                class="btn btn-outline-success update-cart "
+              >
+                Buy Now
+              </button></a
+            >
+          </div>
+          <div class="d-inline">
+            <button
+              data-product="{{product.id}}"
+              data-action="add"
+              class="btn btn-outline-primary update-cart"
+            >
+              Add to Cart
+            </button>
+          </div>
+          <div class="d-inline">
+            <a href="/"
+              ><button data-action="add" class="btn btn-outline-secondary">
+                Continue Shopping
+              </button></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

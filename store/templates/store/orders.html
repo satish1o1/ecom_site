@@ -1,0 +1,110 @@
+{% extends 'store/base.html' %} {% block content %}
+<div class="container mt-3">
+  <h1>My Orders</h1>
+  <hr>
+  {% for order in orders %} {% for item in order.orderitems_set.all %}
+  <div class="col-sm-3 my-1" style="display: inline-block">
+    <div class="container-fluid my-1 d-sm-flex mt-1">
+      <div class="card p-2 box-element">
+        <div class="card-header bg-white p-1">
+          <div class="row justify-content-between p-2">
+            <div class="col">
+              <p class="text-muted">
+                Order ID
+                <span class="font-weight-bold text-dark"
+                  >{{order.transaction_id}}</span
+                >
+              </p>
+              <p class="text-muted">
+                Place On
+                <span class="font-weight-bold text-dark"
+                  >{{order.order_date}}</span
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="media flex-column flex-sm-row">
+            <div class="media-body">
+              <h5 class="bold">{{item.product.title}}</h5>
+              <p class="text-muted">Qt:{{item.quantity}}Pair</p>
+              <h4 class="mt-2 mb-2 bold">
+                <span class="mt-5">&#x20B9;</span>{{item.get_item_total}}
+                <span class="small text-muted"> via (Paypal) </span>
+              </h4>
+              <p class="text-muted">
+                Tracking Status on: <span class="Today">11:30pm, Today</span>
+              </p>
+            </div>
+            <img
+              class="align-self-center img-fluid"
+              src="{{item.product.image.url}}"
+              style="width: 100px; height: 100px"
+            />
+          </div>
+        </div>
+
+        <div class="card-footer bg-white px-sm-1 pt-sm-1 px-0">
+          <div class="row text-center p-1">
+            <div class="col my-auto border-line">
+              <button class="btn btn-outline-success">Track</button>
+            </div>
+            <div class="col my-auto border-line">
+              <button
+                data-trans="{{order.transaction_id}}"
+                data-product="{{item.product.id}}"
+                class="btn btn-outline-danger cancel-order"
+              >
+                Cancel
+              </button>
+            </div>
+            <div class="col my-auto border-line">
+              <a
+              href="/product/{{item.product.id}}"
+              class="btn btn-outline-primary add-btn"
+              >view</a
+            >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endfor %} {% endfor %}
+<script type="text/javascript">
+  cancelBtn = document.getElementsByClassName("cancel-order");
+  for (var i = 0; i < cancelBtn.length; i++) {
+    cancelBtn[i].addEventListener("click", function () {
+      trans_id = this.dataset.trans;
+      productId = this.dataset.product;
+      if (user == "Anonymous") {
+        console.log("unauthorized user");
+      } else {
+        console.log(trans_id, productId);
+        remove_orderItem(trans_id, productId);
+      }
+    });
+  }
+  function remove_orderItem(trans_id, productId) {
+    var url = "/update_myorders/";
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRFToken": csrftoken,
+      },
+      body: JSON.stringify({ trans_id: trans_id, productId: productId }),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log("data:", data);
+        location.reload();
+      });
+  }
+</script>
+</div>
+{% endblock %}
